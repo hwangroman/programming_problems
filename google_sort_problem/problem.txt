@@ -1,0 +1,36 @@
+Problem description (taken from http://avidullu.wordpress.com/2010/02/25/programming-problems-9):
+Given n elements, sort the elements. Here, only one operation is permitted decreaseValue..
+Note that you cannot swap the values.. output should be a sorted list..
+if input is 4 5 2 1 3
+    output is 3 3 3.. There can be many answers.. Give the optimum solution with minimum cost. where as cost is the sum of decreased amounts..
+    for this example, 4,5 are decreased by 1.. 2 is decreased by 2.. 1 is decreased by 1.
+
+Solution:
+My solution is based on following intuition.
+On a given step, if next number in an array is smaller, we can perform two steps:
+1. Decrease previous number(s) so that they are equal to next number
+2. Eliminate next number.
+
+These are two possible paths that the problem can go. 
+
+My solution was inspired by Djikstra algorithm of finding shortest path.
+Suppose we need to find path from beginning of the input array to the end, and every time we encounter a situation (let's call it anomaly) when a next number is smaller than a previous one, we can go one of the two ways described above. So this way we can construct a graph dynamically by adding edges on the anomaly situation.
+
+In pseudocode this can be expressed as following:
+
+sort(A):
+    initialNode = A
+    put initialNode on priority queue
+    while true
+        get nextNode from priority queue minimizing cost
+        if nextNode is in sorted order
+            return the result
+        else
+            find location of anomaly
+            decreasingNumbersNode = create new node by decreasing previous numbers in NextNode
+            put decreasingNumbersNode on priority queue
+
+            removeNextNumberNode = create new node by removing next number from NextNode
+            put removeNextNumberNode on priority queue
+
+
