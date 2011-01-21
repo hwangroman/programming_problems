@@ -24,9 +24,12 @@ def sort(A):
     while(True):
         p, next = queue.get()
         print 'Got from queue:', next
+
         for i in xrange(next.pos, len(next.array)-1):
             if (next.array[i] > next.array[i+1]):
+
                 v2 = next.array[i+1]
+
                 # Decreasing number case
                 dnc = SortEntry(next.array, next.cost, i+1)
                 j = i
@@ -46,7 +49,8 @@ def sort(A):
 
                 break
         else:
-            # If for loop was not break, we have an optimum value
+            # If for loop was not break, 
+            # then array is sorted and the cost is minimum
             return next.array, next.cost
 
 
