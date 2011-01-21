@@ -13,7 +13,7 @@ On a given step, if next number in an array is smaller, we can perform two steps
 
 These are two possible paths that the problem can go. 
 
-My solution was inspired by Djikstra algorithm of finding shortest path.
+My solution was inspired by Dijkstra algorithm for finding shortest path.
 Suppose we need to find path from beginning of the input array to the end, and every time we encounter a situation (let's call it anomaly) when a next number is smaller than a previous one, we can go one of the two ways described above. So this way we can construct a graph dynamically by adding edges on the anomaly situation.
 
 In pseudocode this can be expressed as following:
