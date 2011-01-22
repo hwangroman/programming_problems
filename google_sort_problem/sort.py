@@ -71,6 +71,11 @@ def sort(A):
     '''
     Actual method to solve the problem.
     Modification of Dijkstra shortest path algorithm.
+    
+    Note: It's somewhat inefficient to call iterate over the array
+    both inside is_sorted() and get_nodes() functions.
+    But it was made intensionally to clarify relation to Dijkstra
+    shortest path algorithm.
     '''
     initial = SortNode(A, 0, 0)
     queue = Queue.PriorityQueue()
